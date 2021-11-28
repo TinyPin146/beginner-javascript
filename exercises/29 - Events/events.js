@@ -33,8 +33,27 @@ function handleBuyBtnClick(event) {
   console.log(event.target);
   console.log(event.currentTarget);
   console.log(event.target === event.currentTarget);
+  // Stop this event from bubbling up
+  event.stopPropagation();
 }
 
 buyBtns.forEach((buyButton) => {
   buyButton.addEventListener('click', handleBuyBtnClick);
+});
+
+window.addEventListener(
+  'click',
+  (event) => {
+    console.log('You click window');
+    console.log(event.target);
+    console.log(event.type);
+    console.log(event.bubbles);
+  },
+  { capture: true }
+);
+
+const photoEl = document.querySelector('.photo');
+photoEl.addEventListener('mouseenter', function (e) {
+  console.log(this);
+  console.log(e.currentTarget);
 });
