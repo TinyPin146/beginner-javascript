@@ -11,6 +11,27 @@
 <body>
   <div class="canvasWrap">
     <canvas width="1600" height="1000" id="etch-a-sketch"></canvas>
+
+    <div class="control-knobs">
+      <svg id="knob-group-left" class="knob-group" width="100" height="120" viewBox="0 0 100 120" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect width="auto" height="auto" fill="#E5E5E5" />
+        <g id="knob">
+          <circle id="knob-body" cx="50" cy="60" r="31" fill="#C4C4C4" />
+          <path id="arrow" d="M50.5 32L58.7272 46.25H42.2728L50.5 32Z" fill="#483131" />
+        </g>
+      </svg>
+
+      <svg id="knob-group-right" class="knob-group" width="100" height="120" viewBox="0 0 100 120" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <rect width="auto" height="auto" fill="#E5E5E5" />
+        <g id="knob">
+          <circle id="knob-body" cx="50" cy="60" r="31" fill="#C4C4C4" />
+          <path id="arrow" d="M50.5 32L58.7272 46.25H42.2728L50.5 32Z" fill="#483131" />
+        </g>
+      </svg>
+    </div>
+
     <div class="buttons">
       <button class="shake">Shake!</button>
     </div>
@@ -19,7 +40,13 @@
   <script src="./etch-a-sketch.js"></script>
 
   <style>
+    :root {
+      --Xdegree: 90deg;
+      --Ydegree: 90deg;
+    }
+
     body {
+      box-sizing: border-box;
       min-height: 100vh;
       display: grid;
       align-items: center;
@@ -64,6 +91,14 @@
       60% {
         transform: translate3d(4px, 0, 0);
       }
+    }
+
+    #knob-group-left {
+      transform: rotate(var(--Xdegree));
+    }
+
+    #knob-group-right {
+      transform: rotate(var(--Ydegree));
     }
   </style>
 </body>

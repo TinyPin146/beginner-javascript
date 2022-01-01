@@ -6,8 +6,12 @@ const MOVE_AMOUNT = 20;
 const { width, height } = canvas;
 
 // * create random starting points
-let x = Math.floor(Math.random() * width);
-let y = Math.floor(Math.random() * height);
+let x = Number(Math.floor(Math.random() * width));
+const xDeg = x % 360;
+let y = Number(Math.floor(Math.random() * height));
+const yDeg = y % 360;
+document.documentElement.style.setProperty('--Xdegree', xDeg);
+document.documentElement.style.setProperty('--Ydegree', yDeg);
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
@@ -53,6 +57,8 @@ function draw({ key }) {
   }
   ctx.lineTo(x, y);
   ctx.stroke();
+  document.documentElement.style.setProperty('--Xdegree', xDeg);
+  document.documentElement.style.setProperty('--Ydegree', yDeg);
 }
 
 // ! Handler for keys
