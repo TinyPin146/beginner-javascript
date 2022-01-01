@@ -12,7 +12,21 @@
   <script>
     if (10 > 2) {
       console.log('Yep');
+    } else if (11 > 10) {
+      console.log('Yep');
+    } else if (3 > 1) {
+      console.log('Yep');
     }
+
+    function slugify(sentence, lowercase) {
+      const slug = sentence.replace(/\s/g, '-');
+      if (lowercase) {
+        return slug.toLowerCase();
+      }
+      return slug;
+    }
+
+    console.log(slugify('I am very cool', true));
   </script>
 </body>
 
