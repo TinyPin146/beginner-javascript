@@ -11,6 +11,65 @@
 
 <body>
 
+  <style>
+    :root {
+      --x: 0px;
+      --y: 0px;
+      --rotateX: 0;
+      --rotateY: 0;
+    }
+
+    .turtle {
+      position: relative;
+      transform: translateY(var(--y)) translateX(var(--x)) rotateY(var(--rotateX)) rotate(var(--rotateY));
+      transition: transform .3s;
+    }
+  </style>
+
+  <img width="200" src="./turtle.png" alt="Turtle" class="turtle">
+
+  <script>
+    const root = document.documentElement;
+    const turtle = document.querySelector('.turtle');
+    let x = 1;
+    let y = 1;
+    const speed = 3;
+    let flipped = false;
+    let rotate = 0;
+
+    function handleKeyDown(e) {
+      if (!e.key.includes('Arrow')) return;
+      switch (e.key) {
+        case 'ArrowUp':
+          y -= 1;
+          rotate = -90;
+          break;
+        case 'ArrowDown':
+          y += 1;
+          rotate = 90;
+          break;
+        case 'ArrowLeft':
+          flipped = true;
+          x -= 1;
+          rotate = 0;
+          break;
+        case 'ArrowRight':
+          flipped = false;
+          x += 1;
+          rotate = 0;
+          break;
+
+        default:
+          console.log('Zefuk');
+      }
+      root.style.setProperty('--x', `${x * speed}px`);
+      root.style.setProperty('--y', `${y * speed}px`);
+      root.style.setProperty('--rotateX', `${flipped ? 180 : 0}deg`);
+      root.style.setProperty('--rotateY', `${rotate}deg`);
+    }
+
+    window.addEventListener('keydown', handleKeyDown);
+  </script>
 </body>
 
 </html>
