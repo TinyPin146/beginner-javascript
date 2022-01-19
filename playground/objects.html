@@ -9,8 +9,37 @@
 </head>
 
 <body>
+  <input type="text" name="first" value="wes">
   <script>
+    const age = 100;
+    const person = {
+      name: 'Wes',
+      age,
+      'cool-dude': true,
+      'really cool': false,
+      777: true,
+      dog: 'snickers',
+      clothing: {
+        shirts: 10,
+        pants: 2,
+      },
+      sayHello(greeting = 'Hey') {
+        return `${greeting} ${this.name}`;
+      },
+    };
 
+    person.job = 'web-dev';
+    person.age = 200;
+
+    const personFroze = Object.freeze(person);
+
+    const nameINput = document.querySelector('[name ="first"]');
+    const name = nameINput.value;
+    console.log(name);
+
+    console.log(delete person.job);
+    person.age = undefined;
+    person.age = null;
   </script>
 </body>
 
